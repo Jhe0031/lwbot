@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jennasisis/lwbot/issues"
   },
-  "homepage": "https://github.com/jennasisis/lwbot#readme"
+  "homepage": "https://github.com/jennasisis/lwbot#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
 }
