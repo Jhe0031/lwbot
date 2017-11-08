@@ -5,7 +5,8 @@ var authorAva = ""
 
 module.exports.run = (client, msg, args) => {
       msg.channel.send(new Discord.RichEmbed()
-            .setAuthor(authorName, authorAva))
+            .setAuthor(authorName, authorAva)
+)
 };
 
 module.exports.conf = {
