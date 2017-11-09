@@ -6,7 +6,3 @@ module.exports.run = (client, msg) => {
     };
     msg.channel.send({ embed });
 };
-
-module.exports.conf = {
-    "name": "green"
-};

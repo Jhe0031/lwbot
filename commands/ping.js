@@ -10,7 +10,3 @@ module.exports.run = (client, msg) => {
 );
     });
 };
-
-module.exports.conf = {
-    name: "ping"
-}
