@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 
-module.exports.run = (client, msg) => {
-    msg.channel.send("Pinging...").then(thismessage => {
+module.exports.run = (client, message) => {
+    message.channel.send("Pinging...").then(thismessage => {
         thismessage.delete();
-        msg.channel.send(new Discord.RichEmbed()
+        message.channel.send(new Discord.RichEmbed()
     .addField(":ping_pong: Pong!", Math.round(client.ping)+"ms", false)
-    .addField(":heartbeat: Heartbeat:", `${thismessage.createdAt-msg.createdAt}ms`)
+    .addField(":heartbeat: Heartbeat:", `${thismessage.createdAt-message.createdAt}ms`)
     .setColor(54371)
 );
     });
