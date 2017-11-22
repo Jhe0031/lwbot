@@ -19,7 +19,6 @@
   "dependencies": {
     "discord.js": "^11.2.1",
     "enmap": "^0.4.2",
-    "enmap-level": "^1.0.0",
-    "rss-to-json": "^1.0.3"
+    "enmap-level": "^1.0.0"
   }
 }
