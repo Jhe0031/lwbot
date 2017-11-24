@@ -17,4 +17,4 @@ Open up a [pull request](http://github.com/jennasisis/lwbot/pulls) and I'll get 
 Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot.
   
   
-[<iframe src="https://discordapp.com/widget?id=382585019300053013&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>]
+[<iframe src="https://discordapp.com/widget?id=382585019300053013&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>](http://discord.gg/bQSYxqF)
