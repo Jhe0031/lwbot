@@ -10,11 +10,15 @@ module.exports.run = (client, message, args) => {
       parser.on('end', () => {
           const data = parser.done();
   
-          console.log(data.title);
-          console.log(data.link);
-          console.log(data.description);
-          console.log(data.image.url);
-          console.log(data.items[0].author);
-      });
+          message.channel.send(new Discord.RichEmbed()
+          .setColor(54371)
+          .setAuthor(data.items[0].author, data.image.url, data.link)
+          .addField("Title:", data.title, true)
+          .addField("Updates:", "EVERYDAY", true)
+          .addField("Summary:", `*${data.description}*`, true)
+          .addField("URL:", `[Click Here](${data.link})`, true)
+          .setThumbnail(data.image.url)
+      );
   });
+});
 };
