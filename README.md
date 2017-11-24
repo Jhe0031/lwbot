@@ -18,4 +18,4 @@ Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot
   
     
       
-https://discordapp.com/api/guilds/382585019300053013/widget.json
+<iframe src="https://discordapp.com/widget?id=382585019300053013&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
