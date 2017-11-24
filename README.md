@@ -1,5 +1,5 @@
 # LINE WEBTOON Bot
-This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/PcsDMEV).
+This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
 # What is it?
 It's the Christmas present for that server xD I'll be developing it up until Christmas then release it to the server. After that, who knows what'll happen? \*shrug*
