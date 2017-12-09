@@ -14,7 +14,7 @@ module.exports.run = (client, message, args) => {
           .setColor(54371)
           .setAuthor(data.items[0].author, data.image.url, data.link)
           .addField("Title:", data.title, true)
-          .addField("Updates:", "Monday, Wednesday, Friday", true)
+          .addField("Updates:", "MON, WED, FRI", true)
           .addField("Description:", `*${data.description.trim()}*`, true)
           .addField("URL:", `[Click Here](${data.link})`, true)
           .setThumbnail(data.image.url)
