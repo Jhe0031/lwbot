@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
   const FeedMe = require('feedme');
   const http = require('http');
  
-  http.get('http://www.webtoons.com/en/drama/my-boo/rss?title_no=1185', (res) => {
+  http.get('http://www.webtoons.com/en/slice-of-life/my-giant-nerd-boyfriend/rss?title_no=958', (res) => {
       var parser = new FeedMe(true);
       res.pipe(parser);
       parser.on('end', () => {
@@ -14,7 +14,7 @@ module.exports.run = (client, message, args) => {
           .setColor(54371)
           .setAuthor(data.items[0].author, data.image.url, data.link)
           .addField("Title:", data.title, true)
-          .addField("Updates:", "COMPLETED", true)
+          .addField("Updates:", "Monday, Wednesday, Friday", true)
           .addField("Description:", `*${data.description.trim()}*`, true)
           .addField("URL:", `[Click Here](${data.link})`, true)
           .setThumbnail(data.image.url)
