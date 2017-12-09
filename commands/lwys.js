@@ -1,16 +1,24 @@
 const Discord = require('discord.js');
-const authorData = require('../wtData/authors/shen.json');
-const webtoonData = require('../wtData/webtoons/lwys.json');
 
 module.exports.run = (client, message, args) => {
-            message.channel.send(new Discord.RichEmbed()
-                  .setColor(54371)
-                  .setAuthor(authorData.name, authorData.avatar, null)
-                  .addField("Title:", webtoonData.title, true)
-                  .addField("Author:", webtoonData.author, true)
-                  .addField("Updates:", webtoonData.updates, true)
-                  .addField("Summary:", `*${webtoonData.summary}*`, true)
-                  .addField("URL:", `[Click Here](${webtoonData.URL})`, true)
-                  .setThumbnail(webtoonData.avatar)
-            );
+  const FeedMe = require('feedme');
+  const http = require('http');
+ 
+  http.get('http://www.webtoons.com/en/comedy/live-with-yourself/rss?title_no=919', (res) => {
+      var parser = new FeedMe(true);
+      res.pipe(parser);
+      parser.on('end', () => {
+          const data = parser.done();
+
+          message.channel.send(new Discord.RichEmbed()
+          .setColor(54371)
+          .setAuthor(data.items[0].author, data.image.url, data.link)
+          .addField("Title:", data.title, true)
+          .addField("Updates:", "Monday, Wednesday, Friday", true)
+          .addField("Description:", `*${data.description.trim()}*`, true)
+          .addField("URL:", `[Click Here](${data.link})`, true)
+          .setThumbnail(data.image.url)
+      );
+  });
+});
 };
