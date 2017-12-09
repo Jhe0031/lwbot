@@ -17,7 +17,7 @@ module.exports.run = (client, message, args) => {
           .addField("Updates:", "MON, WED, FRI", true)
           .addField("Description:", `*${data.description.trim()}*`, true)
           .addField("URL:", `[Click Here](${data.link})`, true)
-          .addField("Latest:", `[${data.items[0].title}](${data.items[0].link})`)
+          .addField("Latest:", `[${data.items[0].title}](${data.items[0].link})`, true)
           .setThumbnail(data.image.url)
       );
   });
