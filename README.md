@@ -4,7 +4,7 @@ This is a bot created for the [fan-made LINE WEBTOON Discord server](https://dis
 [<img src="https://canary.discordapp.com/api/guilds/382585019300053013/widget.png?style=banner2">](https://discord.gg/bQSYxqF)
 
 # What is it?
-It's the Christmas present for that server xD I'll be developing it up until Christmas then release it to the server. After that, who knows what'll happen? \*shrug*
+~~It's the Christmas present for that server xD I'll be developing it up until Christmas then release it to the server. After that, who knows what'll happen? -shrug-~~ Well, Christmas is here and gone, and the bot has been released to the server. They seem to like it, which is good! We had a few bumps here and there, but we finally got a stable version pushed.
 
 # Can I have one?
 ...Sure? Make sure you have [Node.js](http://node.js.org/) installed o.o It's writen in Javascript.
