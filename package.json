@@ -1,29 +1,30 @@
 {
-  "name": "lwbot",
-  "version": "0.0.1",
-  "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/PcsDMEV)",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jennasisis/lwbot.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jennasisis/lwbot/issues"
-  },
-  "homepage": "https://github.com/jennasisis/lwbot#readme",
-  "dependencies": {
-    "discord.js": "^11.2.1",
-    "enmap": "^0.4.2",
-    "enmap-level": "^1.0.0",
-    "feedme": "^1.1.0",
-          "nodemon": "1.14.3",
+    "name": "lwbot",
+    "version": "0.0.1",
+    "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](http://discord.gg/bQSYxqF)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jennasisis/lwbot.git"
+    },
+    "author": "Sochima <sochimadn@gmail.com> (SpacemannFinn/Nen)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jennasisis/lwbot/issues"
+    },
+    "homepage": "https://github.com/jennasisis/lwbot#readme",
+    "dependencies": {
+        "all": "0.0.0",
+        "discord.js": "^11.2.1",
+        "enmap": "^0.4.2",
+        "enmap-level": "^1.0.0",
+        "feedme": "1.1.0",
+        "giphy-api": "1.2.7",
+        "nodemon": "1.14.3",
         "sqlite": "^2.8.0",
         "sqlite3": "3.1.9"
-    
-  }
+    }
 }
