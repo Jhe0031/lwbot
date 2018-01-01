@@ -32,4 +32,6 @@ client.on("message", message => {
   }
 });
 
+//That green color is 54371 (for future reference)
+
 client.login(config.token);
