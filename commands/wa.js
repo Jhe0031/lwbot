@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const sql = require("sqlite");//DO NOT TOUCH SAMIR.
 sql.open("./commands/database/Webtoon.sqlite");//DO Not TOUCH SAMIR
 
-var colours = (Math.random() * 0xFFFFFF << 0).toString(16);//randomises colours for a system I plan to put in place later no stressy make messy
+var colours = (Math.random() * 0xFFFFFF << 0).toString(16); //randomises colours for a system I plan to put in place later no stressy make messy
 
 
 let newName = message.content.split(' ')[1];
@@ -13,23 +13,19 @@ let newColour = message.content.split(' ')[3];
 //Validatus Maximus..... I am Larry Trotter deal wit it
 
 if(!newName){
-
   message.channel.sendEmbed(new Discord.RichEmbed()
-
-      .setTitle("Please include the name of the Webtoon")
-
+      .setTitle(":x: Please include the name of the Webtoon")
+      .setColor(16711680)
   );
 return;
 }
 
 if(!newRss){
-
   message.channel.sendEmbed(new Discord.RichEmbed()
-
-      .setTitle("Please include the RSS link. If you don't know how to find it type !lw-rsshelp")
-
+        .setTitle(":x: No RSS link detected.")
+        .setDescription("If you do not know how, do `lw-rsshelp`")
+        .setColor(16711680)
   );
-
 return;
 }
 
@@ -39,12 +35,9 @@ if(!newColour){
 newColour = colours;
 
 message.channel.sendEmbed(new Discord.RichEmbed()
-
-  .setTitle("You have not chosen a colour so one has been chosen for you I hope it looks good. psst it's the on on the sidebar")
+  .setTitle(":x: No color detected. Automatically chose for you")
   .setColor(newColour)
-
   );
-
 }
 
 //########################################################################################### DO NOT TOUCH SAMIR. dis be the database setter upper and upper dater
@@ -61,8 +54,7 @@ sql.get(`SELECT * FROM Webtoon WHERE name ="${newName}"`).then(row => {
 //########################################################################################### PAPA NEN LUVS YEW.
 
 message.channel.sendEmbed(new Discord.RichEmbed()
-
     .setTitle("You've added " + newName + " to the database")
-
+    .setColor(newColour)
 );
 };
