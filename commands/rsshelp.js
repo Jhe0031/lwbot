@@ -1,7 +1,7 @@
 module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
 
-    await message.react("✅");
+    await message.channel.send(":white_check_mark: DM'ing you the information now!");
     await message.author.send("**Hi there!** You've summoned me because you want to figure out how to grab the RSS link, right? I'll take you through the steps. Here we go!");
     await message.author.send("** **");
     await message.author.send("**Step 1:** Go to the Webtoon website (not the app), and pick the Webtoon you want the rss link of.", {files: ['./rsshelp-media/step1.gif']});
