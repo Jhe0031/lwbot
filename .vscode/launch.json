@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Bot",
+            "name": "Start Debug",
             "program": "${workspaceFolder}/main.js"
         }
     ]
