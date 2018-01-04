@@ -88,7 +88,7 @@ client.on('message', async message => {
   const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
 });
 
-client.once('ready', () => {
+client.once('ready', async () => {
   const storedBalances = await Users.findAll();
   storedBalances.forEach(b => currency.set(b.user_id, b));
 })

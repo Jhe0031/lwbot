@@ -1,4 +1,6 @@
 module.exports.run = async (client, message, args, currency) => {
+    const config = require('../config.json');
+    const PREFIX = config.prefix
     const input = message.content.slice(PREFIX.length).trim();
     if (!input.length) return;
     const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
