@@ -66,8 +66,5 @@ module.exports.run = (client, message, args) => {
             .addField("Server Created:", guildCreatedAt.toLocaleString(), true)
             .addField("Emotes:", emotes, true)
         );
-
-        //message.channel.send(`Verification var: ${verification}`);
-        //message.channel.send(`Verification Level: ${message.guild.verificationLevel}`);
     }
 };
