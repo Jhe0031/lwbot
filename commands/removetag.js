@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
         dialect: 'sqlite',
         logging: false,
         // SQLite only
-        storage: 'database.sqlite',
+        storage: 'tags.sqlite',
     });
     
     const Tags = sequelize.define('tags', {
