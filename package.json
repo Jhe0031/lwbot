@@ -24,7 +24,8 @@
         "feedme": "1.1.0",
         "giphy-api": "1.2.7",
         "nodemon": "1.14.3",
+        "sequelize": "^4.28.7",
         "sqlite": "^2.8.0",
-        "sqlite3": "3.1.9"
+        "sqlite3": "^3.1.9"
     }
 }
