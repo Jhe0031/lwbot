@@ -16,4 +16,4 @@ Open up an issue [here](http://github.com/jennasisis/lwbot/issues).
 Open up a [pull request](http://github.com/jennasisis/lwbot/pulls) and I'll get to it when I can.
 
 # Did you create other stuff?
-Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot.
+Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot. I'm also working on a rewrite to that shitty code, (creatively named) [Akiibot Rewrite](http://github.com/jennasisis/akiibot-rewrite)
