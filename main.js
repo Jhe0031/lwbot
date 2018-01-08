@@ -7,6 +7,8 @@ const config = require("./config.json");
 const { Users, CurrencyShop } = require('./dbObjects');
 const currency = new Discord.Collection();
 
+const claimedRecently = new Set();
+
 const PREFIX = config.prefix;
 
 Reflect.defineProperty(currency, 'add', {
@@ -73,7 +75,7 @@ client.on("message", message => {
   // The list of if/else is replaced with those simple 2 lines:
   try {
     let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(client, message, args, currency);
+    commandFile.run(client, message, args, currency, claimedRecently);
   } catch (err) {
     console.error(err);
   }
