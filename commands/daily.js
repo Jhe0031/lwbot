@@ -1,19 +1,12 @@
-module.exports.run = (client, message, args, currency) => {
+module.exports.run = async (client, message, args, currency, claimedRecently) => {
     const Discord = require('discord.js');
-    const timeout = new Discord.Collection();
 
-    // First, this must be at the top level of your code, **NOT** in any event!
-    const talkedRecently = new Set();
-    // Inside your message event, this code will stop any command during cooldown.
-    // Should be placed after your code that checks for bots & prefix, for best performance
+    if (claimedRecently.has(message.author.id)) return message.channel.send(':atm: **|** :x: You have already claimed your daily **100 Kowoks**! :moneybag:');
 
-    if (talkedRecently.has(message.author.id))
-        return;
-
-    // Adds the user to the set so that they can't talk for 2.5 seconds
-    talkedRecently.add(message.author.id);
-        setTimeout(() => {
-        // Removes the user from the set after 2.5 seconds
-        talkedRecently.delete(message.author.id);
-    }, 2500);
+    claimedRecently.add(message.author.id);
+    currency.add(message.author.id, +100);
+    message.channel.send(`:atm: **|** :white_check_mark: You have collected your daily **100 Kowoks!** | Balance: **${currency.getBalance(message.author.id)} Kowoks** :moneybag:`);
+    setTimeout(() => {
+        claimedRecently.delete(message.author.id);
+    }, 8.64e+7);
 };
