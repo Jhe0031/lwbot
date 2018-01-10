@@ -5,8 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node main.js",
-        "install": "node dbInit.js; node main.js"
+        "start": "node main.js"
     },
     "repository": {
         "type": "git",
