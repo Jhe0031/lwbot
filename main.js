@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
 const Sequelize = require('sequelize');
-const config = require("./config.json");
+const config = require('./config.json');
 
 const { Users, CurrencyShop } = require('./dbObjects');
 const currency = new Discord.Collection();
