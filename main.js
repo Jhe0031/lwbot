@@ -82,6 +82,8 @@ client.on("message", message => {
 });
 
 client.on('message', async message => {
+  if(message.author.bot) return;
+
   currency.add(message.author.id, 1);
 
   if (!message.content.startsWith(PREFIX)) return;
