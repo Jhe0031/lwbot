@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-    const config = require('./config.json');
+    const config = require('../config.json');
     const Discord = require('discord.js');
 
     var giphy = require('giphy-api')(config.giphy);
