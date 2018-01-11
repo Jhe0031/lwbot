@@ -1,6 +1,6 @@
 module.exports.run = async (client) => {
     console.log(`Bot is online`);
-    client.channels.get(("382591354427146240" && "235920926862999556" && "389550821584666628")).send(":white_check_mark: **Bot is online!**");
+    client.channels.get("389550821584666628").send("hello hello i'm online ;D");
 
     const Sequelize = require('sequelize');
     const sequelize = new Sequelize('database', 'user', 'password', {
