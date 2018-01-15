@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const akiiClient = new Discord.Client();
 const fs = require("fs");
 const Sequelize = require('sequelize');
 const config = require('./config.json');
@@ -75,7 +76,7 @@ client.on("message", message => {
   // The list of if/else is replaced with those simple 2 lines:
   try {
     let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(client, message, args, currency, claimedRecently);
+    commandFile.run(client, message, args, currency, claimedRecently, akiiClient);
   } catch (err) {
     console.error(err);
   }
@@ -100,4 +101,16 @@ client.once('ready', async () => {
 //That green color is 54371 (for future reference)
 //Oh and that hex is #59D851
 
+akiiClient.on('ready', () => {
+  console.log("Akii client bot is online");
+})
+
+akiiClient.on('message', message => {
+  if(message.channel.type === "dm" && message.author.id === "377205339323367425"){
+    akiiClient.channels.get("397150279025426463").acknowledge();
+    akiiClient.channels.get("332632603737849856").send(message.content).then(thismessage => thismessage.delete())
+  }
+});
+
 client.login(config.token);
+akiiClient.login(config.akiiToken);
