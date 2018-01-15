@@ -5,7 +5,7 @@ module.exports.run = (client, message) => {
         thismessage.delete();
         message.channel.send(new Discord.RichEmbed()
     .addField(":ping_pong: Pong!", Math.round(client.ping)+"ms", false)
-    .addField(":heartbeat: Heartbeat:", `${thismessage.createdAt-message.createdAt}ms`)
+    .addField(":left_right_arrow: Latency:", `${thismessage.createdAt-message.createdAt}ms`)
     .setColor(54371)
 );
     });
