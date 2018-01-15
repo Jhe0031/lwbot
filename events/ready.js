@@ -26,15 +26,70 @@ module.exports.run = async (client) => {
       });
     Tags.sync();
 
-    var playings = ['with Shin-Ae', 'with James', 'with Nen', 'with fire', 'on Webtoons instead of working', 'with your heart', 'with Shen', 'with SAI', 'some game or something idrk', 'with the big boys', 'with Madi', 'in Webtoonland', 'in Wonderland', 'Adobe Illustrator', 'Fire Alpaca', 'for the money', 'YAAAASSSSS', 'with my code', 'with time', 'in space', 'for the good guys', 'with other bots', 'with the ratelimit ;)', 'with the Podcast crew', 'uh no lmao', '[playing status]', '[object Object]', 'against the clock', 'Error 503: Forbidden', 'with your ships', 'Monopoly', 'with life in a box', 'with life', 'with the other lurkers', 'with the skin of my enemies', 'for the glory', 'with friends', 'on the beach', 'at the mall', 'at home', 'on the couch', '?¿', 'devil\'s advocate', 'Poker', 'MS Paint', 'with Kowoks', 'with Uru-chan', 'with Quimchee', 'with Chris McCoy @ Safely Endangered', ' '];
+    // If you want to see this correctly, you need word wrap on
+    var playings = [
+        ['with Shin-Ae', {type: "PLAYING"}], 
+        ['with James', {type: "PLAYING"}], 
+        ['with Nen', {type: "PLAYING"}], 
+        ['with fire', {type: "PLAYING"}], 
+        ['on Webtoons instead of working', {type: "PLAYING"}], 
+        ['with your heart', {type: "PLAYING"}], 
+        ['with Shen', {type: "PLAYING"}], 
+        ['with SAI', {type: "PLAYING"}], 
+        ['some game or something idrk', {type: "PLAYING"}], 
+        ['with the big boys', {type: "PLAYING"}], 
+        ['with Madi', {type: "PLAYING"}], 
+        ['in Webtoonland', {type: "PLAYING"}], 
+        ['in Wonderland', {type: "PLAYING"}], 
+        ['Adobe Illustrator', {type: "PLAYING"}], 
+        ['Fire Alpaca', {type: "PLAYING"}], 
+        ['for the money', {type: "PLAYING"}], 
+        ['YAAAASSSSS', {type: "PLAYING"}], 
+        ['with my code', {type: "PLAYING"}], 
+        ['with time', {type: "PLAYING"}], 
+        ['in space', {type: "PLAYING"}], 
+        ['for the good guys', {type: "PLAYING"}], 
+        ['with other bots', {type: "PLAYING"}], 
+        ['with the ratelimit ;)', {type: "PLAYING"}], 
+        ['with the Podcast crew', {type: "PLAYING"}], 
+        ['[status]', {type: "PLAYING"}], 
+        ['[object Object]', {type: "PLAYING"}], 
+        ['against the clock', {type: "PLAYING"}], 
+        ['Error 503: Forbidden', {type: "PLAYING"}], 
+        ['with your ships', {type: "PLAYING"}], 
+        ['Monopoly', {type: "PLAYING"}], 
+        ['with life in a box', {type: "PLAYING"}], 
+        ['with life', {type: "PLAYING"}], 
+        ['with the other lurkers', {type: "PLAYING"}], 
+        ['with the skin of my enemies', {type: "PLAYING"}], 
+        ['for the glory', {type: "PLAYING"}], 
+        ['with friends', {type: "PLAYING"}], 
+        ['on the beach', {type: "PLAYING"}], 
+        ['at the mall', {type: "PLAYING"}], 
+        ['at home', {type: "PLAYING"}], 
+        ['on the couch', {type: "PLAYING"}], 
+        ['?¿', {type: "PLAYING"}], 
+        ['devil\'s advocate', {type: "PLAYING"}], 
+        ['Poker', {type: "PLAYING"}], 
+        ['MS Paint', {type: "PLAYING"}], 
+        ['with Kowoks', {type: "PLAYING"}], 
+        ['with Uru-chan', {type: "PLAYING"}], 
+        ['with Quimchee', {type: "PLAYING"}], 
+        ['with Chris McCoy @ Safely Endangered', {type: "PLAYING"}], 
+        [' ', {type: "PLAYING"}],
+        ['Netflix', {type: "WATCHING"}],
+        ['Spotify', {type: "LISTENING"}]
+    ];
 
     Array.prototype.randomElement = function (array) {
         return array[Math.floor(Math.random() * array.length)]
     }
 
-    /* setInterval(() => {
-        client.user.setActivity(playings.randomElement(playings));
-    }, 15000) */
+    setInterval(() => {
+        var randomPl = playings.randomElement(playings)
+        client.user.setActivity(randomPl[0], randomPl[1]);
+    }, 15000)
+    
 
     /* setInterval(() => {
         require('child_process').exec('git add database.sqlite', async (e, out, err) => {
