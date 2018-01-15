@@ -1,9 +1,9 @@
 module.exports.run = (client, message, args) => {
 const Discord = require('discord.js');
-const sql = require("sqlite");//DO NOT TOUCH SAMIR.
-sql.open("./commands/database/Webtoon.sqlite");//DO Not TOUCH SAMIR
+const sql = require("sqlite"); //DO NOT TOUCH SAMIR.
+sql.open("./commands/database/Webtoon.sqlite"); //DO Not TOUCH SAMIR
 
-var colours = (Math.random() * 0xFFFFFF << 0).toString(16); //randomises colours for a system I plan to put in place later no stressy make messy
+var colours = (Math.random() * 0xFFFFFF << 0).toString(16); //Randomises colours for a system I plan to put in place later no stressy make messy
 
 
 let newName = message.content.split(' ')[1];
@@ -35,7 +35,7 @@ if(!newColour){
 newColour = colours;
 
 message.channel.sendEmbed(new Discord.RichEmbed()
-  .setTitle(":x: No color detected. Automatically chose for you")
+  .setTitle(":x: No color detected. Automatically chosen")
   .setColor(newColour)
   );
 }

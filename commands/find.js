@@ -10,7 +10,8 @@ let nameCall = message.content.split(' ')[1]
 sql.get(`SELECT * FROM Webtoon WHERE name ="${nameCall}"`).then(row => {
 if(!row){
     message.channel.send(new Discord.RichEmbed()
-    .setTitle("No Webtoon with that name exists")
+    .setTitle(":x: No Webtoon with that name exists")
+    .setColor()
 );
 return;
 }
