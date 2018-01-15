@@ -1,6 +1,5 @@
 module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
-    var ids = [require('../config.json').ids.akii, require('../config.json').ids.nen]
 
     if(message.author.id !== require('../config.json').ids.akii) return message.channel.send(":x: This command is limited to Akii only!");
 
