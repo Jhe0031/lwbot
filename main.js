@@ -98,5 +98,6 @@ client.once('ready', async () => {
 })
 
 //That green color is 54371 (for future reference)
+//Oh and that hex is #59D851
 
 client.login(config.token);
