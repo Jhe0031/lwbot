@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args, currency) => {
     var leaderboardData = currency.sort((a, b) => b.balance - a.balance)
             .filter(user => client.users.has(user.user_id))
             .first(15)
-            .map((user, position) => `\`-${position + 1}-\` ${(client.users.get(user.user_id).username)}: **${user.balance} Kowoks** 💰`)
+            .map((user, position) => `\`•${position + 1}•\` ${(client.users.get(user.user_id).username)}: **${user.balance} Kowoks** 💰`)
             .join('\n')
 
     message.channel.send(new Discord.RichEmbed()

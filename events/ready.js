@@ -27,7 +27,7 @@ module.exports.run = async (client) => {
     Tags.sync();
 
     // If you want to see this correctly, you need word wrap on
-    var playings = [
+    var playings1 = [
         ['with Shin-Ae', {type: "PLAYING"}], 
         ['with James', {type: "PLAYING"}], 
         ['with Nen', {type: "PLAYING"}], 
@@ -85,11 +85,19 @@ module.exports.run = async (client) => {
         return array[Math.floor(Math.random() * array.length)]
     }
 
+    var playings = [['with fire', {type: "PLAYING"}], ['Netflix', {type: "WATCHING"}], ['Spotify', {type: "LISTENING"}]]
     setInterval(() => {
-        var randomPl = playings.randomElement(playings)
+        var randomPl = playings.randomElement(playings);
         client.user.setActivity(randomPl[0], randomPl[1]);
     }, 15000)
     
+
+    /* setInterval(() => {
+        var randomPl = playings.randomElement(playings)
+        client.user.setActivity(randomPl[0], randomPl[1]);
+    }, 15000) */
+    
+
 
     /* setInterval(() => {
         require('child_process').exec('git add database.sqlite', async (e, out, err) => {
