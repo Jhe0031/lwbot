@@ -27,7 +27,7 @@ module.exports.run = async (client) => {
     Tags.sync();
 
     // If you want to see this correctly, you need word wrap on
-    var playings1 = [
+    var playings = [
         ['with Shin-Ae', {type: "PLAYING"}], 
         ['with James', {type: "PLAYING"}], 
         ['with Nen', {type: "PLAYING"}], 
@@ -78,39 +78,16 @@ module.exports.run = async (client) => {
         ['with Chris McCoy @ Safely Endangered', {type: "PLAYING"}], 
         [' ', {type: "PLAYING"}],
         ['Netflix', {type: "WATCHING"}],
+        ['you', {type: "WATCHING"}],
         ['Spotify', {type: "LISTENING"}]
     ];
 
     Array.prototype.randomElement = function (array) {
-        return array[Math.floor(Math.random() * array.length)]
+        return array[Math.floor(Math.random() * array.length)];
     }
 
-    var playings = [['with fire', {type: "PLAYING"}], ['Netflix', {type: "WATCHING"}], ['Spotify', {type: "LISTENING"}]]
     setInterval(() => {
-        var randomPl = playings.randomElement(playings);
-        client.user.setActivity(randomPl[0], randomPl[1]);
-    }, 15000)
-    
-
-    /* setInterval(() => {
         var randomPl = playings.randomElement(playings)
         client.user.setActivity(randomPl[0], randomPl[1]);
-    }, 15000) */
-    
-
-
-    /* setInterval(() => {
-        require('child_process').exec('git add database.sqlite', async (e, out, err) => {
-            if(e || err) return client.channels.get("389550821584666628").send(`<@107599228900999168>, there was an error updating the database automatically: \`\`\`xl\n${e || err}\n\`\`\``);
-            client.channels.get("389550821584666628").send(`:white_check_mark: Added database to git queue, \n\`\`\`xl\n${out}\n\`\`\``);
-        });
-        require('child_process').exec('git commit -m "Automatic DB Update"', async (e, out, err) => {
-            if(e || err) return client.channels.get("389550821584666628").send(`<@107599228900999168>, there was an error updating the database automatically: \`\`\`xl\n${e || err}\n\`\`\``);
-            client.channels.get("389550821584666628").send(`:white_check_mark: Commited database to git queue, \n\`\`\`xl\n${out}\n\`\`\``);
-        });
-        require('child_process').exec('git push origin master', async (e, out, err) => {
-            if(e || err) return client.channels.get("389550821584666628").send(`<@107599228900999168>, there was an error updating the database automatically: \`\`\`xl\n${e || err}\n\`\`\``);
-            client.channels.get("389550821584666628").send(`:white_check_mark: Pushed database to github, \n\`\`\`xl\n${out}\n\`\`\``);
-        });
-    }, 300000) */
+    }, 15000);
 };
