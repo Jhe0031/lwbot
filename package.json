@@ -31,6 +31,7 @@
         "sequelize": "^4.28.7",
         "sqlite": "^2.8.0",
         "sqlite3": "^3.1.13",
+        "urban-dictionary": "^1.0.6",
         "ytdl-core": "^0.18.7"
     }
 }
