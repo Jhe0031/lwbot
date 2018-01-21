@@ -11,7 +11,7 @@ sql.get(`SELECT * FROM Webtoon WHERE name ="${nameCall}"`).then(row => {
 if(!row){
     message.channel.send(new Discord.RichEmbed()
     .setTitle(":x: No Webtoon with that name exists")
-    .setColor()
+    .setColor(54371)
 );
 return;
 }

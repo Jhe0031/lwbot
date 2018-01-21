@@ -6,9 +6,9 @@ sql.open("./commands/database/Webtoon.sqlite"); //DO Not TOUCH SAMIR
 var colours = (Math.random() * 0xFFFFFF << 0).toString(16); //Randomises colours for a system I plan to put in place later no stressy make messy
 
 
-let newName = message.content.split(' ')[1];
-let newRss = message.content.split(' ')[2];
-let newColour = message.content.split(' ')[3];
+let newName = args[0]
+let newRss = args[1]
+let newColour = args[2]
 
 //Validatus Maximus..... I am Larry Trotter deal wit it
 
