@@ -1,6 +1,6 @@
 {
     "name": "lwbot",
-    "version": "0.0.1",
+    "version": "1.1.0",
     "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](http://discord.gg/bQSYxqF)",
     "main": "index.js",
     "scripts": {
@@ -11,7 +11,7 @@
         "type": "git",
         "url": "git+https://github.com/jennasisis/lwbot.git"
     },
-    "author": "Sochima <sochimadn@gmail.com> (SpacemannFinn/Nen)",
+    "author": "James <jennasisis@gmail.com> (Akii) / Sochima <sochimadn@gmail.com> (SpacemannFinn/Nen)",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/jennasisis/lwbot/issues"
