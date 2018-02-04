@@ -1,1 +1,0 @@
-@echo off & cls & echo Loading... & npm i -g npm & npm i -s discord.js & npm i -s sqlite3 & npm install pm2 -g & echo Updated core dependencies & pm2 start music.js & pm2 start relay & pm2 start main.js & start cmd /k pm2 monit
