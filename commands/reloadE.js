@@ -10,7 +10,6 @@ module.exports.run = (client, message, args) => {
     } catch (err) {
         message.channel.send(`:x: \`${err}\``);
         console.debug(`Error in reloadE command: \n${err.stack}`);
-        console.log("THE ABOVE IS NOT AN ERROR. IT IS DEBUG INFORMATION");
         return;
     }
 } else message.channel.send(":x: This command is restricted to Akii only.");

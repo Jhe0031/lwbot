@@ -18,4 +18,4 @@ client.on('message', async message => {
     }
 });
 
-client.login(require('config.json').token);
+client.login(require('./config.json').token);

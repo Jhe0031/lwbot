@@ -1,5 +1,5 @@
 const { Client, Util } = require('discord.js');
-const { TOKEN, PREFIX, GOOGLE_API_KEY } = require('./config.json');
+const { token, prefix, GOOGLE_API_KEY } = require('./config.json');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 
@@ -22,7 +22,7 @@ client.on('reconnecting', () => console.log('[Reconnecting] Disconnected! Attemp
 client.on('message', async msg => {
     try {
 	if (msg.author.bot) return undefined;
-	if (!msg.content.startsWith(PREFIX)) return undefined;
+	if (!msg.content.startsWith(prefix)) return undefined;
 
 	const args = msg.content.split(' ');
 	const searchString = args.slice(1).join(' ');
@@ -30,13 +30,13 @@ client.on('message', async msg => {
 	const serverQueue = queue.get(msg.guild.id);
 
 	let command = msg.content.toLowerCase().split(' ')[0];
-	command = command.slice(PREFIX.length)
+	command = command.slice(prefix.length)
 
-	if(msg.content === `${PREFIX}mping`){
+	if(msg.content === `${prefix}mping`){
 		msg.channel.send(`${Math.round(client.ping)}ms :ping_pong:`)
 	}
 	
-	if (msg.content.startsWith(`${PREFIX}play`)) {
+	if (msg.content.startsWith(`${prefix}play`)) {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send(':x: You must be in a voice channel!');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -82,20 +82,20 @@ client.on('message', async msg => {
 			}
 			return handleVideo(video, msg, voiceChannel);
 		}
-	} else if (msg.content.startsWith(`${PREFIX}skip`)) {
+	} else if (msg.content.startsWith(`${prefix}skip`)) {
 		if (!msg.member.voiceChannel) return msg.channel.send(':x: You are not in a voice channel!');
 		if (!serverQueue) return msg.channel.send(':x: here is nothing playing that I could skip for you.');
         serverQueue.connection.dispatcher.end('Skipped current track');
         msg.channel.send(':track_next:  **Skipping...**');
 		return undefined;
-	} else if (msg.content.startsWith(`${PREFIX}stop`)) {
+	} else if (msg.content.startsWith(`${prefix}stop`)) {
 		if (!msg.member.voiceChannel) return msg.channel.send(':x: You are not in a voice channel!');
 		if (!serverQueue) return msg.channel.send(':x: There is nothing playing that I could stop for you.');
 		serverQueue.songs = [];
         serverQueue.connection.dispatcher.end('Stopped');
         msg.channel.send(':stop_button: **Stopped**');
 		return undefined;
-	} else if (msg.content.startsWith(`${PREFIX}volume`)) {
+	} else if (msg.content.startsWith(`${prefix}volume`)) {
 		if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
 		if (!serverQueue) return msg.channel.send('There is nothing playing.');
 		if (!args[2]) return msg.channel.send(`:control_knobs: The current volume is: **${serverQueue.volume}**`);
@@ -103,20 +103,20 @@ client.on('message', async msg => {
         serverQueue.volume = args[2];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(serverQueue.volume / 10);
 		return msg.channel.send(`:control_knobs: I set the volume to: **${args[2]}**`);
-	} else if (msg.content.startsWith(`${PREFIX}np`)) {
+	} else if (msg.content.startsWith(`${prefix}np`)) {
 		if (!serverQueue) return msg.channel.send('There is nothing playing.');
 		return msg.channel.send(`🎶 Now playing: **${serverQueue.songs[0].title}**`);
-	} else if (msg.content.startsWith(`${PREFIX}queue`)) {
+	} else if (msg.content.startsWith(`${prefix}queue`)) {
 		if (!serverQueue) return msg.channel.send(':x: There is nothing playing.');
 		return msg.channel.send(`__**Song queue:**__\n${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}\n**Now playing:** ${serverQueue.songs[0].title}`);
-	} else if (msg.content.startsWith(`${PREFIX}pause`)) {
+	} else if (msg.content.startsWith(`${prefix}pause`)) {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
 			return msg.channel.send('⏸ ***Paused***');
 		}
 		return msg.channel.send(':x: There is nothing playing.');
-	} else if (msg.content.startsWith(`${PREFIX}resume`)) {
+	} else if (msg.content.startsWith(`${prefix}resume`)) {
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
@@ -191,4 +191,4 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
 }
 
-client.login(TOKEN);
+client.login(token);
