@@ -1,6 +1,6 @@
 {
     "name": "lwbot",
-    "version": "1.1.0",
+    "version": "1.3.0",
     "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](http://discord.gg/bQSYxqF)",
     "main": "main.js",
     "scripts": {
