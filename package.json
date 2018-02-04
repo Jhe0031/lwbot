@@ -2,10 +2,10 @@
     "name": "lwbot",
     "version": "1.1.0",
     "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](http://discord.gg/bQSYxqF)",
-    "main": "index.js",
+    "main": "main.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "pm2 start main.js; pm2 start music.js; pm2 start relay.js"
+        "start": "pm2 start main.js music.js relay.js"
     },
     "repository": {
         "type": "git",
