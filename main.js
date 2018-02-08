@@ -4,7 +4,7 @@ const fs = require("fs");
 const Sequelize = require('sequelize');
 const config = require('./config.json');
 
-const { Users, CurrencyShop } = require('./dbObjects');
+const { Users, CurrencyShop } = require('./data/dbObjects');
 const currency = new Discord.Collection();
 
 const claimedRecently = new Set();
