@@ -2,8 +2,6 @@ module.exports.run = (client, message, args) => {
     const Discord = require('discord.js');
     const config = require('./config.json');
 
-    var people = ["107599228900999168", "235920655823011840"];
-
     function clean(text) {
         if (typeof(text) === "string")
           return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
