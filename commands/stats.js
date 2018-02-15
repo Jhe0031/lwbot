@@ -1,29 +1,15 @@
-const { version } = require("discord.js");
-const moment = require("moment");
-require("moment-duration-format");
+module.exports.run = (client, message, args) => {
+    const Discord = require('discord.js');
 
-exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  message.channel.send(`= STATISTICS =
-• Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
-• Uptime     :: ${duration}
-• Users      :: ${client.users.size.toLocaleString()}
-• Servers    :: ${client.guilds.size.toLocaleString()}
-• Channels   :: ${client.channels.size.toLocaleString()}
-• Discord.js :: v${version}
-• Node       :: ${process.version}`, {code: "asciidoc"});
-};
+    var hours = (Math.round(client.uptime / (1000 * 60 * 60)))
+    var days = (Math.floor(hours / 24)) 
+    var finHours = (hours - days * 24) 
+    var minutes = (Math.round(client.uptime / (1000 * 60)) % 60)
+    var seconds = (Math.round(client.uptime / 1000) % 60)
 
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: [],
-  permLevel: "User"
-};
-
-exports.help = {
-  name: "stats",
-  category: "Miscelaneous",
-  description: "Gives some useful bot statistics",
-  usage: "stats"
+    message.channel.send(new Discord.RichEmbed()
+        .setAuthor(client.user.username, client.user.avatarURL)
+        .addField("Uptime:", `${days} days, ${finHours} hours, ${minutes} minutes, ${seconds} seconds`)
+        .addField("Ping:", `${Math.round(client.ping)}ms`)
+    );
 };

@@ -1,46 +1,19 @@
-# Guide Bot
-An example of a Discord.js Bot Handler. Updated and Maintained by the Idiot's Guide Community.
+# LINE WEBTOON Bot
+This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
-Ages ago, Guide Bot was actually a little bot I had on the official discord.js server.
-It helped me link to the d.js bot making guide I was building, with links.
-This bot grew into something that I could show new coders and bot makers, but
-over time it grew into a full framework - one that is now under the hands of a 
-group of contributors, and no longer easily "understandable" by the majority
-of our newbies. So I've pulled the original Guide Bot out of the mothballs,
-gave it a fresh coat of paint and grease, and here it is back in its full glory!
+[<img src="https://canary.discordapp.com/api/guilds/382585019300053013/widget.png?style=banner2">](https://discord.gg/bQSYxqF)
 
-This command handler is 98% compatible with [my selfbot](https://github.com/eslachance/evie.selfbot) 
-and 99% compatible with commands from [York's Tutorial Bot](https://github.com/AnIdiotsGuide/Tutorial-Bot/tree/Episode-10-Part-1).
+# What is it?
+~~It's the Christmas present for that server xD I'll be developing it up until Christmas then release it to the server. After that, who knows what'll happen? -shrug-~~ Well, Christmas is here and gone, and the bot has been released to the server. They seem to like it, which is good! We had a few bumps here and there, but we finally got a stable version pushed.
 
-## Requirements
+# Can I have one?
+...Sure? Make sure you have [Node.js](http://node.js.org/) installed o.o It's writen in Javascript.
 
-- `git` command line ([Windows](https://git-scm.com/download/win)|[Linux](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)|[MacOS](https://git-scm.com/download/mac)) installed
-- `node` [Version 8.0.0 or higher](https://nodejs.org)
+# It's broke. What do?
+Open up an issue [here](http://github.com/jennasisis/lwbot/issues).
 
-You also need your bot's token. This is obtained by creating an application in
-the Developer section of discordapp.com. Check the [first section of this page](https://anidiots.guide/getting-started/the-long-version.html) 
-for more info.
+# I have suggestion. What do?
+Open up a [pull request](http://github.com/jennasisis/lwbot/pulls) and I'll get to it when I can.
 
-## Downloading
-
-In a command prompt in your projects folder (wherever that may be) run the following:
-
-`git clone https://github.com/An-Idiots-Guide/guidebot.git`
-
-Once finished: 
-
-- In the folder from where you ran the git command, run `cd guidebot` and then run `npm install`
-- Rename or copy `config.js.example` to `config.js`
-- Edit `config.js` and fill in all the relevant details as indicated in the file's comments.
-
-## Starting the bot
-
-To start the bot, in the command prompt, run the following command:
-`node index.js`
-
-## Inviting to a guild
-
-To add the bot to your guild, you have to get an oauth link for it. 
-
-You can use this site to help you generate a full OAuth Link, which includes a calculator for the permissions:
-[https://finitereality.github.io/permissions-calculator/?v=0](https://finitereality.github.io/permissions-calculator/?v=0)
+# Did you create other stuff?
+Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot. I'm also working on a rewrite to that shitty code, (creatively named) [Akiibot Rewrite](http://github.com/jennasisis/akiibot-rewrite)
