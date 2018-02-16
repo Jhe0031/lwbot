@@ -92,6 +92,20 @@ client.on('message', async message => {
   const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
 });
 
+client.on('guildMemberAdd', member => {
+  var guild = client.guilds.get('382585019300053013');
+  var bots = guild.members.filter(member => member.user.bot).map(g => g.toString());
+  
+  guild.channels.get('382640041358262285').fetchMessage('413827090970968074').then(msg => msg.edit(`**Current total members: \`${guild.memberCount-bots.length}\`**`));
+});
+
+client.on('guildMemberRemove', member => {
+  var guild = client.guilds.get('382585019300053013');
+  var bots = guild.members.filter(member => member.user.bot).map(g => g.toString());
+  
+  guild.channels.get('382640041358262285').fetchMessage('413827090970968074').then(msg => msg.edit(`**Current total members: \`${guild.memberCount-bots.length}\`**`));
+});
+
 client.once('ready', async () => {
   const storedBalances = await Users.findAll();
   storedBalances.forEach(b => currency.set(b.user_id, b));
