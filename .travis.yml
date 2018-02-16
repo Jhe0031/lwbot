@@ -4,4 +4,4 @@ install: true
 before_script:
 - npm i -g npm
 - npm i
-script: node main.js
+script: npm start
