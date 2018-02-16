@@ -40,7 +40,8 @@ exports.run = (client, message, args, level) => {
       command = client.commands.get(command);
       if (level < client.levelCache[command.conf.permLevel]) return;
       message.channel.send(new Discord.RichEmbed()
-        .addField(command.help.name, command.help.description)
+        .setTitle(`\`${command.help.name}\``)
+        .setDescription(command.help.description)
         .addField('Usage', command.help.usage, true)
         .addField('Aliases', command.conf.aliases.join(", "), true)
         .setColor('0x59D851')
