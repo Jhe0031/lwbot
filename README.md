@@ -1,21 +1,19 @@
 # LINE WEBTOON Bot
 This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
-[<img src="https://canary.discordapp.com/api/guilds/382585019300053013/widget.png?style=banner2">](https://discord.gg/bQSYxqF)
-
-[![dependendies](https://david-dm.org/jennasisis/lwbot.svg)](https://david-dm.org/jennasisis/lwbot) [![Build Status](https://travis-ci.org/jennasisis/lwbot.svg?branch=master)](https://travis-ci.org/jennasisis/lwbot)
+[<img src="https://discordapp.com/api/guilds/382585019300053013/embed.png">](https://discord.gg/bQSYxqF) [![dependendies](https://david-dm.org/jennasisis/lwbot.svg)](https://david-dm.org/jennasisis/lwbot) [![Build Status](https://travis-ci.org/jennasisis/lwbot.svg?branch=master)](https://travis-ci.org/jennasisis/lwbot)
 
 ## What is it?
-~~It's the Christmas present for that server xD I'll be developing it up until Christmas then release it to the server. After that, who knows what'll happen? -shrug-~~ Well, Christmas is here and gone, and the bot has been released to the server. They seem to like it, which is good! We had a few bumps here and there, but we finally got a stable version pushed.
+It's a bot made by myself and [Nen](http://github.com/SpacemannFinn) to do various things around the server; memes, currency, RSS webtoon links, and more. We hope to eventually replace every bot on the server with this one.
 
 ## Can I have one?
-...Sure? Make sure you have [Node.js](http://node.js.org/) installed o.o It's writen in Javascript.
+Sure! Make sure you have [Node](http://nodejs.org) installed.
 
 ## It's broke. What do?
-Open up an issue [here](http://github.com/jennasisis/lwbot/issues).
+Open up an issue [here](http://github.com/jennasisis/lwbot/issues), or PM me on Discord: Akii#0008
 
 ## I have suggestion. What do?
-Open up a [pull request](http://github.com/jennasisis/lwbot/pulls) and I'll get to it when I can.
+Open up a [pull request](http://github.com/jennasisis/lwbot/pulls) and I'll get to it when I can, or PM me on Discord: Akii#0008
 
 ## Did you create other stuff?
-Yes! Yes indeed, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot. I'm also working on a rewrite to that shitty code, (creatively named) [Akiibot Rewrite](http://github.com/jennasisis/akiibot-rewrite)
+Yes, I did. I created [AkiiBot](http://github.com/jennasisis/AkiiBot), a multipurpose Discord bot. I'm also working on a rewrite to that spaghetti code, (creatively named) [Akiibot Rewrite](http://github.com/jennasisis/akiibot-rewrite).
