@@ -1,5 +1,9 @@
 exports.run = (client, message, args) => {
+<<<<<<< HEAD
     const config = require('../config.js');
+=======
+    const config = require('../config.json');
+>>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
     const Discord = require('discord.js');
 
     var giphy = require('giphy-api')(config.giphy);
@@ -22,6 +26,7 @@ exports.run = (client, message, args) => {
             .setImage(res.data.image_url)
         );
     });
+<<<<<<< HEAD
 };
 
 exports.conf = {
@@ -36,4 +41,6 @@ exports.help = {
     description: 'Kiss someone ️️️️️️️️️️❤️',
     category: 'Fun',
     usage: 'kiss <mention>'
+=======
+>>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
 };

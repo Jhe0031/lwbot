@@ -10,6 +10,7 @@ module.exports.run = (client, message, args) => {
         .addField('Creators', '<@107599228900999168> and <@235920655823011840>', true)
         .addField('Honorable Mentions', '[`An Idiot\'s Guide`](http://anidiots.guide/) - Command handler, eval command, reload command, and so many other things. Thank you *so* much.\n[`discordjs.guide`](http://discordjs.guide) - Provided currency system and tagging system. You guys are amazing.\n<@235920655823011840> - Created database to hold every webtoon we put into it, created commands to handle it. Thank you for knowing SQLite')
     );
+<<<<<<< HEAD
 };
 
 exports.conf = {
@@ -25,3 +26,6 @@ exports.help = {
     category: 'Misc',
     usage: 'info'
 };
+=======
+}
+>>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019

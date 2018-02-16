@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "guidebot",
   "version": "2.3.5",
   "description": "A boilerplate example bot with command handler and reloadable commands. Updated and Maintained by the Idiot's Guide Community",
@@ -36,4 +37,43 @@
     "sqlite": "^2.9.1",
     "sqlite3": "^3.1.13"
   }
+=======
+    "name": "lwbot",
+    "version": "1.3.0",
+    "description": "This is a bot created for the [fan-made LINE WEBTOON Discord server](http://discord.gg/bQSYxqF)",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "pm2 start main.js music.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jennasisis/lwbot.git"
+    },
+    "author": "James <jennasisis@gmail.com> (Akii) / Sochima <sochimadn@gmail.com> (SpacemannFinn/Nen)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jennasisis/lwbot/issues"
+    },
+    "homepage": "https://github.com/jennasisis/lwbot#readme",
+    "dependencies": {
+        "all": "0.0.0",
+        "discord.js": "^11.3.0",
+        "enmap": "^0.4.2",
+        "enmap-level": "^1.0.0",
+        "feedme": "^1.1.2",
+        "ffmpeg-binaries": "^3.2.2",
+        "giphy-api": "^1.2.7",
+        "hastebin-gen": "^1.3.1",
+        "node-opus": "^0.2.7",
+        "nodemon": "^1.14.3",
+        "pm2": "^2.9.3",
+        "sequelize": "^4.32.6",
+        "simple-youtube-api": "^5.0.1",
+        "sqlite": "^2.9.1",
+        "sqlite3": "^3.1.13",
+        "urban-dictionary": "^1.0.6",
+        "ytdl-core": "^0.18.7"
+    }
+>>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
 }

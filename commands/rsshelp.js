@@ -7,6 +7,7 @@ module.exports.run = async (client, message, args) => {
     await message.author.send("**Step 1:** Go to the Webtoon website (not the app), and pick the Webtoon you want the rss link of.", {files: ['./data/rsshelp-media/step1.gif']});
     await message.author.send("** **");
     await message.author.send("**Step 2:** Click on the button next to the subscribe button (it's two curved lines and a dot). Copy the URL you see at the top. This is your RSS link to paste into lw-wa.", {files: ['./data/rsshelp-media/step2.gif']});
+<<<<<<< HEAD
 };
 
 exports.conf = {
@@ -21,4 +22,6 @@ exports.help = {
     description: 'DM\'s you with how to create a new webtoon entry',
     usage: 'rsshelp',
     category: 'Misc'
+=======
+>>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
 };
