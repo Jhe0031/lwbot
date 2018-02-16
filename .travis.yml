@@ -1,6 +1,5 @@
 langauge: node_js
-node_js:
-- "8"
+node_js: node
 install: true
 before_script:
 - npm i -g npm
