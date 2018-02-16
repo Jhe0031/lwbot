@@ -1,7 +1,6 @@
 langauge: node_js
 node_js: node
-install: true
-before_script:
+install: 
 - npm i -g npm
 - npm i
 script: npm start
