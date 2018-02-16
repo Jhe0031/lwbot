@@ -6,6 +6,7 @@ module.exports.run = (client, message, args) => {
     var finHours = (hours - days * 24) 
     var minutes = (Math.round(client.uptime / (1000 * 60)) % 60)
     var seconds = (Math.round(client.uptime / 1000) % 60)
+}
 
 exports.conf = {
   enabled: true,

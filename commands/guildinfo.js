@@ -1,8 +1,5 @@
 module.exports.run = (client, message, args) => {
-<<<<<<< HEAD
-=======
     console.log("guildinfo command ran");
->>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
     const Discord = require('discord.js');
 
     if(message.channel.type === "dm"){
@@ -70,7 +67,6 @@ module.exports.run = (client, message, args) => {
             .addField("Emotes:", emotes, true)
         );
     }
-<<<<<<< HEAD
 };
 
 exports.conf = {
@@ -86,6 +82,3 @@ exports.help = {
     usage: 'guildinfo',
     category: 'Server'
 }
-=======
-};
->>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
