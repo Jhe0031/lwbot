@@ -15,14 +15,6 @@ module.exports.run = (client, message) => {
     });
 };
 
-<<<<<<< HEAD
-exports.help = {
-  name: "ping",
-  category: "Misc",
-  description: "It... like... pings. Then Pongs. And it\"s not Ping Pong.",
-  usage: "ping"
-};
-=======
 exports.conf = {
     enabled: true,
     guildOnly: false,
@@ -36,4 +28,3 @@ exports.conf = {
     description: "It... like... pings. Then Pongs. And it\"s not Ping Pong.",
     usage: "ping"
   };
->>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019

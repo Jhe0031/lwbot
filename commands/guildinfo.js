@@ -68,17 +68,3 @@ module.exports.run = (client, message, args) => {
         );
     }
 };
-
-exports.conf = {
-    enabled: true,
-    aliases: ['serverinfo', 'server', 'guild'],
-    permLevel: 'User',
-    guildOnly: true
-};
-
-exports.help = {
-    name: 'guildinfo',
-    description: 'Shows information about the server',
-    usage: 'guildinfo',
-    category: 'Server'
-}

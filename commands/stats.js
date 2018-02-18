@@ -6,18 +6,11 @@ module.exports.run = (client, message, args) => {
     var finHours = (hours - days * 24) 
     var minutes = (Math.round(client.uptime / (1000 * 60)) % 60)
     var seconds = (Math.round(client.uptime / 1000) % 60)
-}
 
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: [],
-  permLevel: "User"
-};
-
-exports.help = {
-  name: "stats",
-  category: "System",
-  description: "Gives some useful bot statistics",
-  usage: "stats"
+    message.channel.send(new Discord.RichEmbed()
+        .setAuthor(client.user.username, client.user.avatarURL)
+        .addField("Uptime:", `${days} days, ${finHours} hours, ${minutes} minutes, ${seconds} seconds`)
+        .addField("Ping:", `${Math.round(client.ping)}ms`)
+        .setColor('0x59D851')
+    );
 };

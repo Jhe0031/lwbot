@@ -12,7 +12,7 @@ module.exports.run = (client, message, args, currency) => {
             } else if(args[0] === "remove"){
                     currency.add(target.id, -args[1]);
                     message.channel.send(`:white_check_mark: Removed **${args[1]}** :moneybag: from **${target.tag}** | Balance: **${currency.getBalance(target.id)}** :moneybag:`);
-            } else if(args[0] === "transfer"){
+            } else if(args[0] === "ftrans"){
                 var amount = args[1];
                 var transFrom = message.mentions.users.first();
                 var transTo = message.mentions.users.last();

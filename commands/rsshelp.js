@@ -8,17 +8,3 @@ module.exports.run = async (client, message, args) => {
     await message.author.send("** **");
     await message.author.send("**Step 2:** Click on the button next to the subscribe button (it's two curved lines and a dot). Copy the URL you see at the top. This is your RSS link to paste into lw-wa.", {files: ['./data/rsshelp-media/step2.gif']});
 };
-
-exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: [],
-    permLevel: 'User'
-};
-
-exports.help = {
-    name: 'rsshelp',
-    description: 'DM\'s you with how to create a new webtoon entry',
-    usage: 'rsshelp',
-    category: 'Misc'
-};

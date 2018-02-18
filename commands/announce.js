@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
         } else {color = 54371; message.guild.channels.get('382642103626498049').send(`<@&383439861463515136>`); announce();}
         
         function announce(){
-            message.guild.channels.get('382642103626498049').send(new Discord.RichEmbed()
+            client.channels.get('382642103626498049').send(new Discord.RichEmbed()
                 .setColor(color)
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setFooter(`${date.getHours()}:${date.getMinutes()} • ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`)
@@ -39,20 +39,6 @@ module.exports.run = async (client, message, args) => {
         }
     } else message.channel.send(":x: You do not have access to this command!");
 } catch (err) {message.channel.send(`:x: ${err}`)}
-}
-
-exports.conf = {
-    enabled: true,
-    guildOnly: true,
-    aliases: ['anno'],
-    permLevel: 'Moderator'
-};
-
-exports.help = {
-    name: "announce",
-    description: "Sends an announcement to the announcements channel",
-    category: "Server",
-    usage: "announce <Title> | <Content> [| <args: color=base10, no-subs>]"
 }
 
 //<@&383439861463515136> anno subs role

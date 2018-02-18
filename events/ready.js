@@ -2,35 +2,6 @@ module.exports.run = async (client) => {
     console.log(`Bot is online`);
     client.channels.get("389550821584666628").send("hello hello i'm online ;D");
 
-<<<<<<< HEAD
-  // Both `wait` and `client.log` are in `./modules/functions`.
-  client.logger.log(`${client.user.tag}, Ready`, "ready");
-=======
-    const Sequelize = require('sequelize');
-    const sequelize = new Sequelize('database', 'user', 'password', {
-        host: 'localhost',
-        dialect: 'sqlite',
-        logging: false,
-        // SQLite only
-        storage: 'database.sqlite',
-    });
-    
-    const Tags = sequelize.define('tags', {
-        name: {
-            type: Sequelize.STRING,
-            unique: true,
-        },
-        description: Sequelize.TEXT,
-        username: Sequelize.STRING,
-        usage_count: {
-            type: Sequelize.INTEGER,
-            defaultValue: 0,
-            allowNull: false,
-        },
-      });
-    Tags.sync();
->>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
-
     // If you want to see this correctly, you need word wrap on
     var playings = [
         ['with Shin-Ae', {type: "PLAYING"}], 
