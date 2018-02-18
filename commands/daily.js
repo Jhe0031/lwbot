@@ -1,7 +1,5 @@
 module.exports.run = async (client, message, args, currency, claimedRecently) => {
-    const Discord = require('discord.js');
-
-    if (claimedRecently.has(message.author.id)) return message.channel.send(':atm: **|** :x: You have already claimed your daily **100 Kowoks**! :moneybag:');
+    if (claimedRecently.has(message.author.id)) return message.channel.send(`:atm: **|** :x: You have already claimed your daily **100 Kowoks**! :moneybag:`);
 
     claimedRecently.add(message.author.id);
     currency.add(message.author.id, +100);

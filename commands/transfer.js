@@ -1,9 +1,9 @@
 module.exports.run = async (client, message, args, currency) => {
-    const config = require('../config.json');
-    const PREFIX = config.prefix
+    const config = require(`../config.json`);
+    const PREFIX = config.prefix;
     const input = message.content.slice(PREFIX.length).trim();
     if (!input.length) return;
-    const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
+    const [, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
     const currentAmount = currency.getBalance(message.author.id);
     const transferAmount = commandArgs.split(/ +/g).find(arg => !/<@!?\d+>/g.test(arg));
     const transferTarget = message.mentions.users.first();

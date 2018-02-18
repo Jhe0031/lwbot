@@ -1,13 +1,13 @@
 module.exports.run = async (client, message, args, currency) => {
-    require('sqlite3');
-    require('sqlite');
-    require('sequelize');
-    const config = require('../config.json');
-    const PREFIX = config.prefix
+    require(`sqlite3`);
+    require(`sqlite`);
+    require(`sequelize`);
+    const config = require(`../config.json`);
+    const PREFIX = config.prefix;
     const input = message.content.slice(PREFIX.length).trim();
     if (!input.length) return;
-    const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
-    const { Users, CurrencyShop } = require('../data/dbObjects');
+    const [, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
+    const { Users, CurrencyShop } = require(`../data/dbObjects`);
     const item = await CurrencyShop.findOne({ where: { name: { $like: commandArgs } } });
     if (!item) return message.channel.send(`:x: **That item doesn't exist.**`);
     if (item.cost > currency.getBalance(message.author.id)) {
