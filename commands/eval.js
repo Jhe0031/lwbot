@@ -7,23 +7,21 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     const rev = client.token.split(``).reverse().join(`[^]{0,2}`);
     const filter = new RegExp(`${token}|${rev}`, `g`);
     if (message.author.id !== `107599228900999168`) return;
-    try {
-        let output = eval(code);
-        if (output instanceof Promise || (Boolean(output) && typeof output.then === `function` && typeof output.catch === `function`)) output = await output;
-        output = inspect(output, { depth: 0, maxArrayLength: null });
-        output = output.replace(filter, `[TOKEN]`);
-        output = clean(output);
-        await message.channel.send(`\`\`\`js\n${output}\n\`\`\``).catch(() => {
-            try {
-                hastebin(output, `js`).then(r => {
-                    message.channel.send(`:warning: **Output > 2000 characters; uploaded to Hastebin:** ${r}.`);
-                });
-            } catch (error) {
-                message.channel.send(`:x: **Hastebin upload error:** ${error.name}: ${error.message}`);
-            }
+    let output = eval(code);
+    if (output instanceof Promise || (Boolean(output) && typeof output.then === `function` && typeof output.catch === `function`)) output = await output;
+    output = inspect(output, { depth: 0, maxArrayLength: null });
+    output = output.replace(filter, `[TOKEN]`);
+    output = clean(output);
+    try {await message.channel.send(`\`\`\`js\n${output}\n\`\`\``);}
+    catch (err) {
+        if (output.length > 2000) return hastebin(output, `js`).then(r => {
+            message.channel.send(`Output longer than 2000 characters, uploaded to Hastebin: ${r}.`);
         });
-    } catch (error) {
-        message.channel.send(`The following error occured \`\`\`js\n${error.stack}\`\`\``);
+        message.channel.send(`ERROR: \`\`\`${err}\`\`\``).catch(err => {
+            hastebin(err, `js`).then(r => {
+                message.channel.send(`Undefined error, uploaded to hastebin in case: ${r}`);
+            });
+        });
     }
 
     function clean(text)  {
