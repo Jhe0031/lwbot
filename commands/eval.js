@@ -12,16 +12,15 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     output = inspect(output, { depth: 0, maxArrayLength: null });
     output = output.replace(filter, `[TOKEN]`);
     output = clean(output);
-    try {await message.channel.send(`\`\`\`js\n${output}\n\`\`\``);}
+    if (output.length > 2000) return hastebin(output, `js`).then(r => message.channel.send(`Output longer than 2000 characters, posted to Hastebin: ${r}`));
+    try {
+        await message.channel.send(`\`\`\`xl\n${output}\`\`\``).catch(err => {
+            if (err.length > 2000) return hastebin(output, `js`).then(r => message.channel.send(`Error longer than 2000 characters, posted to Hastebin: ${r}`));
+            message.channel.send(`\`\`\`xl\n${err}\`\`\``);
+        });}
     catch (err) {
-        if (output.length > 2000) return hastebin(output, `js`).then(r => {
-            message.channel.send(`Output longer than 2000 characters, uploaded to Hastebin: ${r}.`);
-        });
-        message.channel.send(`ERROR: \`\`\`${err}\`\`\``).catch(err => {
-            hastebin(err, `js`).then(r => {
-                message.channel.send(`Undefined error, uploaded to hastebin in case: ${r}`);
-            });
-        });
+        if (err.length > 2000) return hastebin(output, `js`).then(r => message.channel.send(`Error longer than 2000 characters, posted to Hastebin: ${r}`));
+        message.channel.send(`\`\`\`xl\n${err}\`\`\``);
     }
 
     function clean(text)  {
