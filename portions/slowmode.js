@@ -24,11 +24,11 @@ client.on(`message`, message => {
             talkedRecLock = true;
             slowmode = args[1]*1000;
             message.channel.send(`:white_check_mark: Slowmode has been set to ${args[1]}!`);
-        }
+        } else return message.channel.send(`:x: You do not have access to this command!`);
     }
 
     if (message.content === `${prefix}slowoff`) {
-        if (message.member.roles.has(modRole.id) || message.author.id === require(`./config.json`).ids.akii) {
+        if (message.member.roles.has(modRole.id) || message.author.id === require(`../config.json`).ids.akii) {
             talkedRecLock = false;
             slowmode = 0;
             message.channel.send(`:white_check_mark: Slowmode has been turned off!`);
