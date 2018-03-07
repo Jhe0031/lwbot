@@ -1,0 +1,1 @@
+module.exports.run = (client) => console.log(`[Disconnected] Disconnected!`);
