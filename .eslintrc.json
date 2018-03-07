@@ -35,14 +35,14 @@
         }
       ],
       "space-before-blocks": [
-        "error", {
+        "warn", {
           "functions":"always",
           "keywords": "always",
           "classes": "always"
         }
       ],
       "space-before-function-paren": [
-        "error", {
+        "warn", {
           "anonymous": "never",
           "named": "never",
           "asyncArrow": "always"
