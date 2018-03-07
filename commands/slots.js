@@ -11,15 +11,15 @@ module.exports.run = async (client, message, args) => { // eslint-disable-line n
     try {
         if (!args[0]) {
         
-            var fslot1 = await slot.randomElement(slot);
-            var fslot2 = await slot.randomElement(slot);
-            var fslot3 = await slot.randomElement(slot);
-            var fslot4 = await slot.randomElement(slot);
-            var fslot5 = await slot.randomElement(slot);
-            var fslot6 = await slot.randomElement(slot);
-            var fslot7 = await slot.randomElement(slot);
-            var fslot8 = await slot.randomElement(slot);
-            var fslot9 = await slot.randomElement(slot);
+            var fslot1 = slot.randomElement(slot);
+            var fslot2 = slot.randomElement(slot);
+            var fslot3 = slot.randomElement(slot);
+            var fslot4 = slot.randomElement(slot);
+            var fslot5 = slot.randomElement(slot);
+            var fslot6 = slot.randomElement(slot);
+            var fslot7 = slot.randomElement(slot);
+            var fslot8 = slot.randomElement(slot);
+            var fslot9 = slot.randomElement(slot);
 
             if (fslot4 === fslot5 && fslot5 === fslot6 && fslot6 === fslot4) {
                 message.channel.send(`${fslot1}  **|**  ${fslot2} **|**  ${fslot3}\n\n${fslot4}  **|**  ${fslot5}  **|**  ${fslot6}   **<**\n\n${fslot7}  **|**  ${fslot8}  **|**  ${fslot9}\n\n         **[ Yup ]**`);
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => { // eslint-disable-line n
                 message.channel.send(`${fslot1}  **|**  ${fslot2} **|**  ${fslot3}\n\n${fslot4}  **|**  ${fslot5}  **|**  ${fslot6}   **<**\n\n${fslot7}  **|**  ${fslot8}  **|**  ${fslot9}\n\n         **[ Nope ]**`);
             }
         } else if (args[0] === `%`) {
-            message.channel.send(`:slot_machine: The current win percentage is **${Math.round(((1/slot.length)*3)*100)}%**\n:gear: **\`Rounded: ((1 ÷ Length of slot array) x 3) x 100\`**`);
+            message.channel.send(`:slot_machine: The current win percentage is **${Math.round(((1/slot.length)*3)*100)}%**`);
         } else if (args[0] === `list`) {
             message.channel.send(`Current emotes: ${slot}`);
         }

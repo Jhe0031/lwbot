@@ -1,7 +1,6 @@
+const ud = require(`urban-dictionary`);
+const Discord = require(`discord.js`);
 module.exports.run = (client, message, args) => {
-    const ud = require(`urban-dictionary`);
-    const Discord = require(`discord.js`);
-
     var definition = args[0];
 
     if (!definition) return message.channel.send(`:x: You forgot a word to look up!`);
@@ -18,5 +17,3 @@ module.exports.run = (client, message, args) => {
         }
     });
 };
-
-

@@ -1,7 +1,6 @@
+const Discord = require(`discord.js`);
 module.exports.run = async (client, message, args) => {
     try {
-        const Discord = require(`discord.js`);
-
         if (message.member.roles.has(`382591919772925962`) || message.author.id === `107599228900999168`) {
             var date = new Date();
 

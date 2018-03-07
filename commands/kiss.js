@@ -4,7 +4,7 @@ exports.run = (client, message) => {
 
     var giphy = require(`giphy-api`)(config.giphy);
 
-    const sweetheart = message.mentions.users.first();
+    var sweetheart = message.mentions.users.first();
 
     message.guild.member(sweetheart).id;
 

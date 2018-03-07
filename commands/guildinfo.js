@@ -6,7 +6,9 @@ module.exports.run = (client, message) => {
         message.channel.send(`:x: This command will not work in DM's`);
         return;
     } else {
-        
+        //Sets the embed color
+        var embedColor = message.guild.me.displayColor | `0x59D851`;
+
         //If the guild icon is empty, sets guildIcon to owner's avatar
         if (message.guild.iconURL) {var guildIcon = message.guild.iconURL;}
         else {guildIcon = message.guild.owner.user.avatarURL;}
