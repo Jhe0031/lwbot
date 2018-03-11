@@ -7,7 +7,6 @@ const TableHints = require('../../table-hints');
 const AbstractQueryGenerator = require('../abstract/query-generator');
 const randomBytes = require('crypto').randomBytes;
 const semver = require('semver');
-
 const Op = require('../../operators');
 
 /* istanbul ignore next */
@@ -15,11 +14,7 @@ const throwMethodUndefined = function(methodName) {
   throw new Error('The method "' + methodName + '" is not defined! Please add it to your sql dialect.');
 };
 
-const QueryGenerator = {
-  __proto__: AbstractQueryGenerator,
-  options: {},
-  dialect: 'mssql',
-
+class MSSQLQueryGenerator extends AbstractQueryGenerator {
   createSchema(schema) {
     return [
       'IF NOT EXISTS (SELECT schema_name',
@@ -31,7 +26,7 @@ const QueryGenerator = {
       ";'",
       'END;'
     ].join(' ');
-  },
+  }
 
   dropSchema(schema) {
     // Mimics Postgres CASCADE, will drop objects belonging to the schema
@@ -66,7 +61,7 @@ const QueryGenerator = {
       "EXEC sp_executesql N'DROP SCHEMA", this.quoteIdentifier(schema), ";'",
       'END;'
     ].join(' ');
-  },
+  }
 
   showSchemasQuery() {
     return [
@@ -75,7 +70,7 @@ const QueryGenerator = {
       "'INFORMATION_SCHEMA', 'dbo', 'guest', 'sys', 'archive'",
       ')', 'AND', '"s"."name" NOT LIKE', "'db_%'"
     ].join(' ');
-  },
+  }
 
   versionQuery() {
     // Uses string manipulation to convert the MS Maj.Min.Patch.Build to semver Maj.Min.Patch
@@ -84,7 +79,7 @@ const QueryGenerator = {
       "SET @ms_ver = REVERSE(CONVERT(NVARCHAR(20), SERVERPROPERTY('ProductVersion')));",
       "SELECT REVERSE(SUBSTRING(@ms_ver, CHARINDEX('.', @ms_ver)+1, 20)) AS 'version'"
     ].join(' ');
-  },
+  }
 
   createTableQuery(tableName, attributes, options) {
     const query = "IF OBJECT_ID('<%= table %>', 'U') IS NULL CREATE TABLE <%= table %> (<%= attributes %>)",
@@ -147,7 +142,7 @@ const QueryGenerator = {
     }
 
     return _.template(query, this._templateSettings)(values).trim() + ';';
-  },
+  }
 
   describeTableQuery(tableName, schema) {
     let sql = [
@@ -180,7 +175,7 @@ const QueryGenerator = {
     }
 
     return sql;
-  },
+  }
 
   renameTableQuery(before, after) {
     const query = 'EXEC sp_rename <%= before %>, <%= after %>;';
@@ -188,11 +183,11 @@ const QueryGenerator = {
       before: this.quoteTable(before),
       after: this.quoteTable(after)
     });
-  },
+  }
 
   showTablesQuery() {
     return 'SELECT TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES;';
-  },
+  }
 
   dropTableQuery(tableName) {
     const query = "IF OBJECT_ID('<%= table %>', 'U') IS NOT NULL DROP TABLE <%= table %>";
@@ -201,7 +196,7 @@ const QueryGenerator = {
     };
 
     return _.template(query, this._templateSettings)(values).trim() + ';';
-  },
+  }
 
   addColumnQuery(table, key, dataType) {
     // FIXME: attributeToSQL SHOULD be using attributes in addColumnQuery
@@ -220,7 +215,7 @@ const QueryGenerator = {
       table: this.quoteTable(table),
       attribute
     });
-  },
+  }
 
   removeColumnQuery(tableName, attributeName) {
     const query = 'ALTER TABLE <%= tableName %> DROP COLUMN <%= attributeName %>;';
@@ -228,7 +223,7 @@ const QueryGenerator = {
       tableName: this.quoteTable(tableName),
       attributeName: this.quoteIdentifier(attributeName)
     });
-  },
+  }
 
   changeColumnQuery(tableName, attributes) {
     const query = 'ALTER TABLE <%= tableName %> <%= query %>;';
@@ -264,7 +259,7 @@ const QueryGenerator = {
       tableName: this.quoteTable(tableName),
       query: finalQuery
     });
-  },
+  }
 
   renameColumnQuery(tableName, attrBefore, attributes) {
     const query = "EXEC sp_rename '<%= tableName %>.<%= before %>', '<%= after %>', 'COLUMN';",
@@ -275,7 +270,7 @@ const QueryGenerator = {
       before: attrBefore,
       after: newName
     });
-  },
+  }
 
   bulkInsertQuery(tableName, attrValueHashes, options, attributes) {
     options = options || {};
@@ -351,7 +346,7 @@ const QueryGenerator = {
       offset += batch;
     }
     return commands.join(';');
-  },
+  }
 
   updateQuery(tableName, attrValueHash, where, options, attributes) {
     let sql = super.updateQuery(tableName, attrValueHash, where, options, attributes);
@@ -360,7 +355,7 @@ const QueryGenerator = {
       sql = sql.replace('UPDATE', updateArgs);
     }
     return sql;
-  },
+  }
 
   upsertQuery(tableName, insertValues, updateValues, where, model) {
     const targetTableAlias = this.quoteTable(`${tableName}_target`);
@@ -477,7 +472,7 @@ const QueryGenerator = {
       query = `SET IDENTITY_INSERT ${tableNameQuoted} ON; ${query} SET IDENTITY_INSERT ${tableNameQuoted} OFF;`;
     }
     return query;
-  },
+  }
 
   deleteQuery(tableName, where, options) {
     options = options || {};
@@ -512,18 +507,18 @@ const QueryGenerator = {
     }
 
     return _.template(query, this._templateSettings)(replacements);
-  },
+  }
 
   showIndexesQuery(tableName) {
     const sql = "EXEC sys.sp_helpindex @objname = N'<%= tableName %>';";
     return _.template(sql, this._templateSettings)({
       tableName: this.quoteTable(tableName)
     });
-  },
+  }
 
   showConstraintsQuery(tableName) {
     return `EXEC sp_helpconstraint @objname = ${this.escape(this.quoteTable(tableName))};`;
-  },
+  }
 
   removeIndexQuery(tableName, indexNameOrAttributes) {
     const sql = 'DROP INDEX <%= indexName %> ON <%= tableName %>';
@@ -539,7 +534,7 @@ const QueryGenerator = {
     };
 
     return _.template(sql, this._templateSettings)(values);
-  },
+  }
 
   attributeToSQL(attribute) {
     if (!_.isPlainObject(attribute)) {
@@ -617,7 +612,7 @@ const QueryGenerator = {
     }
 
     return template;
-  },
+  }
 
   attributesToSQL(attributes, options) {
     const result = {},
@@ -650,36 +645,31 @@ const QueryGenerator = {
     }
 
     return result;
-  },
+  }
 
   createTrigger() {
     throwMethodUndefined('createTrigger');
-  },
+  }
 
   dropTrigger() {
     throwMethodUndefined('dropTrigger');
-  },
+  }
 
   renameTrigger() {
     throwMethodUndefined('renameTrigger');
-  },
+  }
 
   createFunction() {
     throwMethodUndefined('createFunction');
-  },
+  }
 
   dropFunction() {
     throwMethodUndefined('dropFunction');
-  },
+  }
 
   renameFunction() {
     throwMethodUndefined('renameFunction');
-  },
-
-  quoteIdentifier(identifier) {
-    if (identifier === '*') return identifier;
-    return '[' + identifier.replace(/[\[\]']+/g, '') + ']';
-  },
+  }
 
   /**
    * Generate common SQL prefix for ForeignKeysQuery.
@@ -705,7 +695,7 @@ const QueryGenerator = {
         'INNER JOIN SYS.COLUMNS COL ON COL.COLUMN_ID = PARENT_COLUMN_ID AND COL.OBJECT_ID = TB.OBJECT_ID ' +
         'INNER JOIN SYS.TABLES RTB ON RTB.OBJECT_ID = FKC.REFERENCED_OBJECT_ID ' +
         'INNER JOIN SYS.COLUMNS RCOL ON RCOL.COLUMN_ID = REFERENCED_COLUMN_ID AND RCOL.OBJECT_ID = RTB.OBJECT_ID';
-  },
+  }
 
   /**
    * Generates an SQL query that returns all foreign keys details of a table.
@@ -722,7 +712,7 @@ const QueryGenerator = {
       sql += ' AND SCHEMA_NAME(TB.SCHEMA_ID) =' + wrapSingleQuote(table.schema);
     }
     return sql;
-  },
+  }
 
   getForeignKeyQuery(table, attributeName) {
     const tableName = table.tableName || table;
@@ -735,7 +725,7 @@ const QueryGenerator = {
     }
 
     return sql;
-  },
+  }
 
   getPrimaryKeyConstraintQuery(table, attributeName) {
     const tableName = wrapSingleQuote(table.tableName || table);
@@ -753,14 +743,14 @@ const QueryGenerator = {
       `AND K.COLUMN_NAME = ${wrapSingleQuote(attributeName)}`,
       `AND K.TABLE_NAME = ${tableName};`
     ].join(' ');
-  },
+  }
 
   dropForeignKeyQuery(tableName, foreignKey) {
     return _.template('ALTER TABLE <%= table %> DROP <%= key %>', this._templateSettings)({
       table: this.quoteTable(tableName),
       key: this.quoteIdentifier(foreignKey)
     });
-  },
+  }
 
   getDefaultConstraintQuery(tableName, attributeName) {
     const sql = 'SELECT name FROM SYS.DEFAULT_CONSTRAINTS ' +
@@ -771,7 +761,7 @@ const QueryGenerator = {
       table: this.quoteTable(tableName),
       column: attributeName
     });
-  },
+  }
 
   dropConstraintQuery(tableName, constraintName) {
     const sql = 'ALTER TABLE <%= table %> DROP CONSTRAINT <%= constraint %>;';
@@ -779,19 +769,19 @@ const QueryGenerator = {
       table: this.quoteTable(tableName),
       constraint: this.quoteIdentifier(constraintName)
     });
-  },
+  }
 
   setAutocommitQuery() {
     return '';
-  },
+  }
 
   setIsolationLevelQuery() {
 
-  },
+  }
 
   generateTransactionId() {
     return randomBytes(10).toString('hex');
-  },
+  }
 
   startTransactionQuery(transaction) {
     if (transaction.parent) {
@@ -799,7 +789,7 @@ const QueryGenerator = {
     }
 
     return 'BEGIN TRANSACTION;';
-  },
+  }
 
   commitTransactionQuery(transaction) {
     if (transaction.parent) {
@@ -807,7 +797,7 @@ const QueryGenerator = {
     }
 
     return 'COMMIT TRANSACTION;';
-  },
+  }
 
   rollbackTransactionQuery(transaction) {
     if (transaction.parent) {
@@ -815,7 +805,7 @@ const QueryGenerator = {
     }
 
     return 'ROLLBACK TRANSACTION;';
-  },
+  }
 
   selectFromTableFragment(options, model, attributes, tables, mainTableAs, where) {
     let topFragment = '';
@@ -873,7 +863,7 @@ const QueryGenerator = {
     }
 
     return mainFragment;
-  },
+  }
 
   addLimitAndOffset(options, model) {
     // Skip handling of limit and offset as postfixes for older SQL Server versions
@@ -906,7 +896,7 @@ const QueryGenerator = {
     }
 
     return fragment;
-  },
+  }
 
   booleanValue(value) {
     return value ? 1 : 0;
@@ -918,4 +908,4 @@ function wrapSingleQuote(identifier) {
   return Utils.addTicks(Utils.removeTicks(identifier, "'"), "'");
 }
 
-module.exports = QueryGenerator;
+module.exports = MSSQLQueryGenerator;
