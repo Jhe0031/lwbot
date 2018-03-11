@@ -1,3 +1,8 @@
+# THIS ENTIRE BRANCH IS DEPRECATED!
+If you want to get the latest, go to [this repo](http://github.com/jennasisis/lwbot-rewrite)
+
+
+
 # LINE WEBTOON Bot
 This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
