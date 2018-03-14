@@ -89,16 +89,13 @@ client.on(`message`, message => {
 
 /* client.on(`message`, async message => {
     if (message.author.bot) return;
-
-    
-
     if (!message.content.startsWith(PREFIX)) return;
     const input = message.content.slice(PREFIX.length).trim();
     if (!input.length) return;
     const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/); // eslint-disable-line no-unused-vars
 }); */
 
-client.on(`guildMemberAdd`, () => {
+/* client.on(`guildMemberAdd`, () => {
     var guild = client.guilds.get(`382585019300053013`);
     var bots = guild.members.filter(member => member.user.bot).map(g => g.toString());
   
@@ -110,7 +107,7 @@ client.on(`guildMemberRemove`, () => {
     var bots = guild.members.filter(member => member.user.bot).map(g => g.toString());
   
     guild.channels.get(`382640041358262285`).fetchMessage(`413827090970968074`).then(msg => msg.edit(`:busts_in_silhouette: **Current total members: \`${guild.memberCount-bots.length}\`**`));
-});
+}); */
 
 client.once(`ready`, async () => {
     const storedBalances = await Users.findAll();

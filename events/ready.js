@@ -2,6 +2,12 @@ module.exports.run = async (client) => {
     console.log(`Bot is online`);
     client.channels.get(`389550821584666628`).send(`hello hello i'm online ;D`);
 
+    // Sets the "Current total members" message in #rules_and_info
+    var guild = client.guilds.get(`382585019300053013`);
+    var bots = guild.members.filter(member => member.user.bot).map(g => g.toString());
+    guild.channels.get(`382640041358262285`).fetchMessage(`423594731994611723`).then(msg => msg.edit(`:busts_in_silhouette: **Current total members: \`${guild.memberCount-bots.length}\`**`));
+
+    // All of the playing statuses the bot cycles through every 15 seconds
     var playings = [
         [`with Shin-Ae`, {type: `PLAYING`}], 
         [`with James`, {type: `PLAYING`}], 
