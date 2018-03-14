@@ -3,12 +3,11 @@ const client = new Discord.Client();
 const fs = require(`fs`);
 const Sequelize = require(`sequelize`);
 const config = require(`./config.json`);
-
 const { Users, CurrencyShop } = require(`./data/dbObjects`); // eslint-disable-line no-unused-vars
 const currency = new Discord.Collection();
-
 const claimedRecently = new Set();
 const PREFIX = config.prefix;
+
 
 Reflect.defineProperty(currency, `add`, {
     value: async function add(id, amount) {
@@ -74,22 +73,30 @@ client.on(`message`, message => {
     // The list of if/else is replaced with those simple 2 lines:
     try {
         const commandFile = require(`./commands/${command}.js`);
-        commandFile.run(client, message, args, currency, claimedRecently);
+        commandFile.run(
+            client,
+            message,
+            args, 
+            currency, 
+            claimedRecently
+        );
     } catch (err) {
         console.error(err);
     }
-});
-
-client.on(`message`, async message => {
-    if (message.author.bot) return;
 
     currency.add(message.author.id, 1);
+});
+
+/* client.on(`message`, async message => {
+    if (message.author.bot) return;
+
+    
 
     if (!message.content.startsWith(PREFIX)) return;
     const input = message.content.slice(PREFIX.length).trim();
     if (!input.length) return;
     const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/); // eslint-disable-line no-unused-vars
-});
+}); */
 
 client.on(`guildMemberAdd`, () => {
     var guild = client.guilds.get(`382585019300053013`);

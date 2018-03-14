@@ -1,13 +1,10 @@
 .DS_Store
-<<<<<<< HEAD
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-=======
->>>>>>> a8ede0d4f86bf40e330da9c62bf94d79356cd019
 config.json
 relay.js
 misc.js

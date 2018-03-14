@@ -3,7 +3,7 @@ const Discord = require(`discord.js`);
 module.exports.run = (client, message) => {
     message.channel.send(new Discord.RichEmbed()
         .addField(`:ping_pong: Pong!`, `Pinging...`)
-        .addField(`left_right_arrow: Latency:`, `Pinging...`)
+        .addField(`:left_right_arrow: Latency:`, `Pinging...`)
         .setColor(54371)
     ).then(thismessage => {
         thismessage.edit(new Discord.RichEmbed()
