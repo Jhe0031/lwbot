@@ -71,4 +71,7 @@ module.exports.run = async (client) => {
     var randomPl = playings.randomElement(playings);
     client.user.setActivity(randomPl[0], randomPl[1]);
   }, 15000);
+
+  // Auto eslint! [Every 5 minutes]
+  setInterval(() => require(`child_process`).exec(`eslint . --fix`), 300000);
 };
