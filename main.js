@@ -8,83 +8,82 @@ const currency = new Discord.Collection();
 const claimedRecently = new Set();
 const PREFIX = config.prefix;
 
-
 Reflect.defineProperty(currency, `add`, {
-    value: async function add(id, amount) {
-        const user = currency.get(id);
-        if (user) {
-            user.balance += Number(amount);
-            return user.save();
-        }
-        const newUser = await Users.create({ user_id: id, balance: amount });
-        currency.set(id, newUser);
-        return newUser;
-    },
+  value: async function add(id, amount) {
+    const user = currency.get(id);
+    if (user) {
+      user.balance += Number(amount);
+      return user.save();
+    }
+    const newUser = await Users.create({ user_id: id, balance: amount });
+    currency.set(id, newUser);
+    return newUser;
+  },
 });
 
 Reflect.defineProperty(currency, `getBalance`, {
-    value: function getBalance(id) {
-        const user = currency.get(id);
-        return user ? user.balance : 0;
-    },
+  value: function getBalance(id) {
+    const user = currency.get(id);
+    return user ? user.balance : 0;
+  },
 });
 
 const sequelize = new Sequelize(`database`, `user`, `password`, {
-    host: `localhost`,
-    dialect: `sqlite`,
-    logging: false,
-    // SQLite only
-    storage: `database.sqlite`,
+  host: `localhost`,
+  dialect: `sqlite`,
+  logging: false,
+  // SQLite only
+  storage: `database.sqlite`,
 });
 
 const Tags = sequelize.define(`tags`, { // eslint-disable-line no-unused-vars
-    name: {
-        type: Sequelize.STRING,
-        unique: true,
-    },
-    description: Sequelize.TEXT,
-    username: Sequelize.STRING,
-    usage_count: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-        allowNull: false,
-    },
+  name: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  description: Sequelize.TEXT,
+  username: Sequelize.STRING,
+  usage_count: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+    allowNull: false,
+  },
 });
 
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir(`./events/`, (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-        const eventFunction = require(`./events/${file}`);
-        const eventName = file.split(`.`)[0];
-        // super-secret recipe to call events with all their proper arguments *after* the `client` var.
-        client.on(eventName, (...args) => eventFunction.run(client, ...args));
-    });
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const eventFunction = require(`./events/${file}`);
+    const eventName = file.split(`.`)[0];
+    // super-secret recipe to call events with all their proper arguments *after* the `client` var.
+    client.on(eventName, (...args) => eventFunction.run(client, ...args));
+  });
 });
 
 client.on(`message`, message => {
-    if (message.author.bot) return;
-    if (message.content.indexOf(config.prefix) !== 0) return;
+  if (message.author.bot) return;
+  if (message.content.indexOf(config.prefix) !== 0) return;
 
-    // This is the best way to define args. Trust me.
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
+  // This is the best way to define args. Trust me.
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
-    // The list of if/else is replaced with those simple 2 lines:
-    try {
-        const commandFile = require(`./commands/${command}.js`);
-        commandFile.run(
-            client,
-            message,
-            args, 
-            currency, 
-            claimedRecently
-        );
-    } catch (err) {
-        console.error(err);
-    }
+  // The list of if/else is replaced with those simple 2 lines:
+  try {
+    const commandFile = require(`./commands/${command}.js`);
+    commandFile.run(
+      client,
+      message,
+      args, 
+      currency, 
+      claimedRecently
+    );
+  } catch (err) {
+    console.error(err);
+  }
 
-    currency.add(message.author.id, 1);
+  currency.add(message.author.id, 1);
 });
 
 /* client.on(`message`, async message => {
@@ -110,8 +109,8 @@ client.on(`guildMemberRemove`, () => {
 }); */
 
 client.once(`ready`, async () => {
-    const storedBalances = await Users.findAll();
-    storedBalances.forEach(b => currency.set(b.user_id, b));
+  const storedBalances = await Users.findAll();
+  storedBalances.forEach(b => currency.set(b.user_id, b));
 });
 
 //That green color is 54371 (for future reference)

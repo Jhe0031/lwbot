@@ -8,32 +8,32 @@ var slowmode = 2500;
 client.on(`ready`, () => console.log(`Slowmode portion ready`));
 
 client.on(`message`, message => {
-    if (talkedRecently.has(message.author.id) && talkedRecLock === true) return message.delete();
-    talkedRecently.add(message.author.id);
-    setTimeout(() => {
-        talkedRecently.delete(message.author.id);
-    }, slowmode);
+  if (talkedRecently.has(message.author.id) && talkedRecLock === true) return message.delete();
+  talkedRecently.add(message.author.id);
+  setTimeout(() => {
+    talkedRecently.delete(message.author.id);
+  }, slowmode);
     
-    if (message.author.bot || !message.content.startsWith(prefix)) return;
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  if (message.author.bot || !message.content.startsWith(prefix)) return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
     
-    var modRole = message.guild.roles.find(`name`, `Mods`);
-    if (message.content.startsWith(`${prefix}slowmode`)) {
-        if (message.member.roles.has(modRole.id) || message.author.id === require(`../config.json`).ids.akii) {
-            if (isNaN(args[1])) return message.channel.send(`:x: ${args[1]} is not a number!`);
-            talkedRecLock = true;
-            slowmode = args[1]*1000;
-            message.channel.send(`:white_check_mark: Slowmode has been set to ${args[1]}!`);
-        } else return message.channel.send(`:x: You do not have access to this command!`);
-    }
+  var modRole = message.guild.roles.find(`name`, `Mods`);
+  if (message.content.startsWith(`${prefix}slowmode`)) {
+    if (message.member.roles.has(modRole.id) || message.author.id === require(`../config.json`).ids.akii) {
+      if (isNaN(args[1])) return message.channel.send(`:x: ${args[1]} is not a number!`);
+      talkedRecLock = true;
+      slowmode = args[1]*1000;
+      message.channel.send(`:white_check_mark: Slowmode has been set to ${args[1]}!`);
+    } else return message.channel.send(`:x: You do not have access to this command!`);
+  }
 
-    if (message.content === `${prefix}slowoff`) {
-        if (message.member.roles.has(modRole.id) || message.author.id === require(`../config.json`).ids.akii) {
-            talkedRecLock = false;
-            slowmode = 0;
-            message.channel.send(`:white_check_mark: Slowmode has been turned off!`);
-        } else return message.channel.send(`:x: You do not have access to this command!`);
-    }
+  if (message.content === `${prefix}slowoff`) {
+    if (message.member.roles.has(modRole.id) || message.author.id === require(`../config.json`).ids.akii) {
+      talkedRecLock = false;
+      slowmode = 0;
+      message.channel.send(`:white_check_mark: Slowmode has been turned off!`);
+    } else return message.channel.send(`:x: You do not have access to this command!`);
+  }
 });
 
 client.login(token);
