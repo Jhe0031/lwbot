@@ -1,4 +1,6 @@
 # LINE WEBTOON Bot
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jennasisis/lwbot.svg)](https://greenkeeper.io/)
 This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
 [<img src="https://discordapp.com/api/guilds/382585019300053013/embed.png">](https://discord.gg/bQSYxqF) 
