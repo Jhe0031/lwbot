@@ -1,12 +1,11 @@
 # LINE WEBTOON Bot
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/jennasisis/lwbot.svg)](https://greenkeeper.io/)
 This is a bot created for the [fan-made LINE WEBTOON Discord server](https://discord.gg/bQSYxqF).
 
 [<img src="https://discordapp.com/api/guilds/382585019300053013/embed.png">](https://discord.gg/bQSYxqF) 
 [![dependendies](https://david-dm.org/jennasisis/lwbot.svg)](https://david-dm.org/jennasisis/lwbot)
 [![Build Status](https://travis-ci.org/jennasisis/lwbot.svg?branch=master)](https://travis-ci.org/jennasisis/lwbot) 
-[![GitHub release](https://img.shields.io/github/release/jennasisis/lwbot.svg)](http://github.com/jennasisis/lwbot)
+[![Greenkeeper badge](https://badges.greenkeeper.io/jennasisis/lwbot.svg)](https://greenkeeper.io/)
 
 ## What is it?
 It's a bot made by myself and [Nen](http://github.com/SpacemannFinn) to do various things around the server; memes, currency, RSS webtoon links, and more. We hope to eventually replace every bot on the server with this one.
