@@ -30,7 +30,7 @@
         "libsodium-wrappers": "^0.7.3",
         "moment": "^2.21.0",
         "moment-duration-format": "^2.2.2",
-        "node-opus": "^0.2.7",
+        "node-opus": "^0.3.0",
         "nodemon": "^1.17.2",
         "pm2": "^2.10.1",
         "sequelize": "^4.36.1",
